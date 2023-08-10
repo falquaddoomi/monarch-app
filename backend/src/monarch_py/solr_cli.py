@@ -169,7 +169,7 @@ def associations(
 def search(
     q: str = typer.Option(None, "--query", "-q"),
     category: List[str] = typer.Option(None, "--category", "-c"),
-    in_taxon: str = typer.Option(None, "--in-taxon", "-t"),
+    in_taxon_label: str = typer.Option(None, "--in-taxon-label", "-t"),
     facet_fields: List[str] = typer.Option(None, "--facet-fields", "-ff"),
     facet_queries: List[str] = typer.Option(None, "--facet-queries"),
     limit: int = typer.Option(20, "--limit", "-l"),
@@ -189,7 +189,7 @@ def search(
     Optional Args:
         q: The query string to search for
         category: The category of the entity
-        taxon: The taxon of the entity
+        in_taxon_label: taxon labels to filter on
         facet_fields: The fields to facet on
         facet_queries: The queries to facet on
         limit: The number of entities to return
@@ -301,6 +301,7 @@ def association_table(
         help="The association category to get associations for, ex. biolink:GeneToPhenotypicFeatureAssociation",
     ),
     q: str = typer.Option(None, "--query", "-q"),
+    sort: List[str] = typer.Option(None, "--sort", "-s"),
     limit: int = typer.Option(5, "--limit", "-l"),
     offset: int = typer.Option(0, "--offset"),
     fmt: str = typer.Option(
